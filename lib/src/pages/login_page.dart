@@ -5,7 +5,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body: Stack( // Serán 2 elementos uno encima del otro (pila)
         children: <Widget>[
           _crearFondo( context ),
           _loginForm( context ),
@@ -194,7 +194,7 @@ class LoginPage extends StatelessWidget {
     return Stack(
       children: <Widget>[
         fondoModaro,
-        Positioned( top: 90.0, left: 30.0, child: circulo ),
+        Positioned( top: 90.0, left: 30.0, child: circulo ), // Para posicionar el círculo en el stack
         Positioned( top: -40.0, right: -30.0, child: circulo ),
         Positioned( bottom: -50.0, right: -10.0, child: circulo ),
         Positioned( bottom: 120.0, right: 20.0, child: circulo ),
@@ -206,7 +206,7 @@ class LoginPage extends StatelessWidget {
             children: <Widget>[
               Icon( Icons.person_pin_circle, color: Colors.white, size: 100.0 ),
               SizedBox( height: 10.0, width: double.infinity ),
-              Text('Fernando Herrera', style: TextStyle( color: Colors.white, fontSize: 25.0 ))
+              Text('José Manuel Moraleda', style: TextStyle( color: Colors.white, fontSize: 25.0 ))
             ],
           ),
         )
