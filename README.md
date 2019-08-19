@@ -1,3 +1,3 @@
-# FormValidation, CRUD y Fotos
+# Sección 11. Validación de formularios
 
-Repositorio oficial de mi curso de Flutter
+Repositorio de mi curso de Flutter
