@@ -17,20 +17,20 @@ class LoginPage extends StatelessWidget {
   Widget _loginForm(BuildContext context) {
 
     final bloc = Provider.of(context);
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size; // Con esto obtenemos las dimensiones de la pantalla
 
-    return SingleChildScrollView(
+    return SingleChildScrollView( // Con esto conseguimos que hagamos scroll dependiendo de la altura de su hijo
       child: Column(
         children: <Widget>[
 
-          SafeArea(
+          SafeArea( // Para salvar el notch
             child: Container(
               height: 180.0,
             ),
           ),
 
           Container(
-            width: size.width * 0.85,
+            width: size.width * 0.85, // 85% de la pantalla
             margin: EdgeInsets.symmetric(vertical: 30.0),
             padding: EdgeInsets.symmetric( vertical: 50.0 ),
             decoration: BoxDecoration(
@@ -40,8 +40,8 @@ class LoginPage extends StatelessWidget {
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 3.0,
-                  offset: Offset(0.0, 5.0),
-                  spreadRadius: 3.0
+                  offset: Offset(0.0, 5.0), // Sombra de la caja
+                  spreadRadius: 3.0         // Sombra más blur
                 )
               ]
             ),
@@ -69,7 +69,7 @@ class LoginPage extends StatelessWidget {
 
   Widget _crearEmail(LoginBloc bloc) {
 
-    return StreamBuilder(
+    return StreamBuilder( // Conectamos el input con el stream
       stream: bloc.emailStream,
       builder: (BuildContext context, AsyncSnapshot snapshot){
         
@@ -77,15 +77,15 @@ class LoginPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20.0),
 
         child: TextField(
-          keyboardType: TextInputType.emailAddress,
+          keyboardType: TextInputType.emailAddress, // Tipo de la caja de texto
           decoration: InputDecoration(
             icon: Icon( Icons.alternate_email, color: Colors.deepPurple ),
             hintText: 'ejemplo@correo.com',
             labelText: 'Correo electrónico',
-            counterText: snapshot.data,
-            errorText: snapshot.error
+            counterText: snapshot.data, // Para poner en pantalla lo que está escribiendo el usuario
+            errorText: snapshot.error   // Si el snapshot tiene un error Flutter lo detecta y pinta la caja roja y pone un mensaje de error.
           ),
-          onChanged: bloc.changeEmail,
+          onChanged: bloc.changeEmail, // Cada vez que el usuario escriba algo se emite al stream
         ),
 
       );
@@ -99,7 +99,7 @@ class LoginPage extends StatelessWidget {
 
   Widget _crearPassword(LoginBloc bloc) {
 
-    return StreamBuilder(
+    return StreamBuilder( // Conectamos el input con el stream
       stream: bloc.passwordStream,
       builder: (BuildContext context, AsyncSnapshot snapshot){
         
@@ -107,12 +107,12 @@ class LoginPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.0),
 
           child: TextField(
-            obscureText: true,
+            obscureText: true, // Para ocultar el texto
             decoration: InputDecoration(
               icon: Icon( Icons.lock_outline, color: Colors.deepPurple ),
               labelText: 'Contraseña',
               counterText: snapshot.data,
-              errorText: snapshot.error
+              errorText: snapshot.error // Si el snapshot tiene un error Flutter lo detecta y pinta la caja roja y pone un mensaje de error.
             ),
             onChanged: bloc.changePassword,
           ),
@@ -140,13 +140,13 @@ class LoginPage extends StatelessWidget {
             padding: EdgeInsets.symmetric( horizontal: 80.0, vertical: 15.0),
             child: Text('Ingresar'),
           ),
-          shape: RoundedRectangleBorder(
+          shape: RoundedRectangleBorder( // Bordes redondeados del botón
             borderRadius: BorderRadius.circular(5.0)
           ),
           elevation: 0.0,
           color: Colors.deepPurple,
           textColor: Colors.white,
-          onPressed: snapshot.hasData ? ()=> _login(bloc, context) : null
+          onPressed: snapshot.hasData ? ()=> _login(bloc, context) : null // Si los dos campos tienen valores correctos se habilita el botón para Ingresar
         );
       },
     );
